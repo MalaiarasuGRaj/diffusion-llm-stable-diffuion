@@ -1,0 +1,14 @@
+streamlit>=1.28.0
+requests>=2.31.0
+Pillow>=10.0.0
+numpy>=1.24.0
+python-dotenv>=1.0.0
+
+# Hugging Face integration
+transformers>=4.30.0
+torch>=2.0.0
+
+# Optional: For local model inference (uncomment if needed)
+diffusers>=0.20.0          # For local Stable Diffusion
+accelerate>=0.20.0         # For faster inference
+scipy>=1.10.0              # Required by some models
