@@ -24,10 +24,15 @@ def load_gemma_model(hf_token):
         st.error(f"Error loading Gemma model: {e}")
         return None, None
 
-def generate_text_gemma(prompt, tokenizer, model):
+def generate_text_gemma(prompt, hf_token):
     """
     Generates text using the Gemma model.
     """
+    tokenizer, model = load_gemma_model(hf_token)
+    if not tokenizer or not model:
+        st.error("Model and/or tokenizer not loaded. Cannot generate text.")
+        return "Error: Model not loaded."
+
     # Format the prompt for Gemma's instruction-tuned model
     chat = [{"role": "user", "content": prompt}]
     formatted_prompt = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=True)

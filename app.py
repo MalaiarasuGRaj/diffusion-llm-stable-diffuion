@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 from src.page_config import set_page_config
 from src.stable_diffusion import generate_image_stable_diffusion
-from src.gemma import load_gemma_model, generate_text_gemma
+from src.gemma import generate_text_gemma
 from src.sidebar import render_sidebar
 
 # Load environment variables
@@ -67,19 +67,12 @@ def ui_text_generation(hf_token):
     </div>
     """, unsafe_allow_html=True)
 
-    with st.spinner("Loading Gemma model... This might take a moment on first run."):
-        gemma_tokenizer, gemma_model = load_gemma_model(hf_token)
-
-    if not gemma_tokenizer or not gemma_model:
-        st.error("Could not load the text generation model. Please check the logs.")
-        return
-
     prompt = st.text_area("Enter your text prompt:", placeholder="Ask a question or give an instruction...", height=100, key="text_prompt")
 
     if st.button("✍️ Generate Text", type="primary"):
         if prompt:
             with st.spinner("Generating text..."):
-                response = generate_text_gemma(prompt.strip(), gemma_tokenizer, gemma_model)
+                response = generate_text_gemma(prompt.strip(), hf_token)
                 st.success("Text generated successfully!")
                 st.markdown(response)
         else:
