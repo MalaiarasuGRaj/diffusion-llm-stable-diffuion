@@ -26,7 +26,7 @@ def ui_image_generation(hf_token):
     <div class="mode-description">
         How it works: Enter any descriptive text prompt and the Stable Diffusion XL model will generate a high-quality image that visually represents your prompt.
 
-        Examples of good prompts:
+        Example prompts:
             - A serene mountain landscape at sunset, vibrant colors, photorealistic
             - Cyberpunk city street with neon lights and flying cars, digital art
             - Portrait of a futuristic astronaut on an alien planet, cinematic lighting
@@ -64,6 +64,11 @@ def ui_text_generation(hf_token):
     st.markdown("""
     <div class="mode-description">
         How it works: Enter any question or instruction and the Google Gemma model will provide a text-based response.
+
+        Example prompts:
+            - What are the benefits of meditation?
+            - Write a short story about a robot learning to love.
+            - Explain the theory of relativity in simple terms.
     </div>
     """, unsafe_allow_html=True)
 
