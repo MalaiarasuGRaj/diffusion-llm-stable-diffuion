@@ -8,3 +8,6 @@ def render_sidebar():
     st.sidebar.info("""
     **Image Generation:** Stable Diffusion XL Base 1.0
     """)
+    st.sidebar.info("""
+    **Text Generation:** Google Gemma 2B-IT
+    """)
